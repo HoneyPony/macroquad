@@ -113,8 +113,9 @@ impl Camera for Camera2D {
     }
 
     fn viewport(&self) -> Option<(i32, i32, i32, i32)> {
-        let dpi_scale = miniquad::window::dpi_scale() as i32;
-        self.viewport.map(|(x, y, w, h)| (x * dpi_scale, y * dpi_scale, w * dpi_scale, h * dpi_scale))        
+        let dpi_scale = miniquad::window::dpi_scale();
+        let scale = |x: i32| { (x as f32 * dpi_scale) as i32 };
+        self.viewport.map(|(x, y, w, h)| (scale(x), scale(y), scale(w), scale(h)))        
     }
 }
 
