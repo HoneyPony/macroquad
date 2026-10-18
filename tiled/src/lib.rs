@@ -29,6 +29,9 @@ pub struct Object {
     pub name: String,
 
     pub properties: HashMap<String, String>,
+
+    /// Object text, if the object is a text object
+    pub text: Option<String>,
 }
 
 /// Flip operation application order:
@@ -417,6 +420,8 @@ pub fn load_map(
                     .iter()
                     .map(|property| (property.name.to_string(), property.value.to_string()))
                     .collect(),
+
+                text: object.text.as_ref().map(|t| t.text.clone()),
             });
         }
 

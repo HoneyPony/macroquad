@@ -54,6 +54,12 @@ pub struct Layer {
 
 #[derive(Clone, Debug, Default, DeJson)]
 #[nserde(default)]
+pub struct ObjectText {
+    pub text: String,
+}
+
+#[derive(Clone, Debug, Default, DeJson)]
+#[nserde(default)]
 pub struct Object {
     pub id: u32,
     pub name: String,
@@ -63,6 +69,7 @@ pub struct Object {
     pub gid: Option<u32>,
     pub ellipse: Option<bool>,
     pub polygon: Option<Vec<PolyPoint>>,
+    pub text: Option<ObjectText>,
 
     pub properties: Vec<Property>,
     pub rotation: f32,
